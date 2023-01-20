@@ -10,4 +10,5 @@ Different scenarios are simulated, considering additive. dominant and epistatic 
 2. Use data from the $1,000$ [genomes project](https://www.internationalgenome.org/) to explore the same scenario on a different population (still diploid genomes, but human)
 3. Use synthetic data from [HAPNEST](https://www.ebi.ac.uk/biostudies/studies/S-BSST936) (~1 million samples) to explore the effect of data scale on the results
 
-[Infinium Global Screening Array](https://www.illumina.com/products/by-type/microarray-kits/infinium-global-screening.html) with $654,027$ SNP variants
+Human SNP data are likely data from whole-genome sequencing: for the purpose of this work, SNP-array-like data will be extracted, based on the [Infinium Global Screening Array](https://www.illumina.com/products/by-type/microarray-kits/infinium-global-screening.html) with $654,027$ SNP variants 
+(genetic maps and SNP variant lists can be found [here](https://support.illumina.com/downloads/infinium-global-screening-array-v2-0-support-files.html)).
