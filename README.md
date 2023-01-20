@@ -6,5 +6,5 @@ Different scenarios are simulated, considering additive. dominant and epistatic 
 
 ## Operational steps
 
-1. Use data from [Nazzicari & Biscarini 2022](https://www.nature.com/articles/s41598-022-24405-0)
-
+1. Use data from [Nazzicari & Biscarini 2022](https://www.nature.com/articles/s41598-022-24405-0) (~1,000 samples) to simulate phenotypes under scenarios of extreme epistasis, and add these to the existing fully additive and fully dominant simulated phenotypes
+2. Use data from the $1,000$
