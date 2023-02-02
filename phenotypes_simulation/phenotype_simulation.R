@@ -184,7 +184,7 @@ while(TRUE){
     sim.pars = param_file_simphe, 
     fgeno = SNP, 
     fusepar = params_outfile, 
-    ftype = "ind.head", 
+    ftype = "snp.head", 
     seed = floor(runif(1) * 100000), #this is so each invocation is different 
     fwrite = FALSE, 
     pattern = "[[:alpha:]]+",
