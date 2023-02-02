@@ -30,6 +30,7 @@ pick_main_effects = function(SNP_names, QTN, A_mean, D_mean, cv){
   #generating effects: additive and dominant
   A_eff = rnorm_posneg_effect(n = QTN, mean = A_mean, cv = cv)
   D_eff = rnorm_posneg_effect(n = QTN, mean = D_mean, cv = cv)
+  A_eff = A_eff + D_eff
   
   #putting all together
   return(data.frame(
