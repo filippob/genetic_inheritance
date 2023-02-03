@@ -1,0 +1,10 @@
+Title: "Modeling Quantitative Trait Loci and Interpretation of Models"
+
+Traditional model
+-----------------
+G = mu + aw + dv
+
+w = (-1, 0, 1) for (AA, Aa, aa)
+v = (0, 1, 0) for (AA, Aa, aa)
+
+

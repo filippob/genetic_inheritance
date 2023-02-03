@@ -3,3 +3,13 @@ Title: "An Extension of the Concept of Partitioning Hereditary Variance for Anal
 In the absence of GxE:
 P = G + E
 V(P) = V(G) + V(E)
+
+Fisher (1918): G = A + D + I (where I stands for interaction, i.e. epistasis)
+--> V(G) = V(A) + V(D) [there remained to be described the epistatic variance --> Cockerham]
+
+Two biallelic loci: (A,a) (B,b) --> 9 possible genotypes
+Single locus variance = Var(A) + Var(D)
+Two-locus variance = Var(AA) + Var(AD) + Var(DA) + Var(DD)
+
+
+
