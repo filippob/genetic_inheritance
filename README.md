@@ -12,3 +12,12 @@ Different scenarios are simulated, considering additive. dominant and epistatic 
 
 Human SNP data are likely data from whole-genome sequencing: for the purpose of this work, SNP-array-like data will be extracted, based on the [Infinium Global Screening Array](https://www.illumina.com/products/by-type/microarray-kits/infinium-global-screening.html) with $654,027$ SNP variants 
 (genetic maps and SNP variant lists can be found [here](https://support.illumina.com/downloads/infinium-global-screening-array-v2-0-support-files.html)).
+
+## Modelling additivity, dominance and epistasis
+
+In this work, we are going to follow the model for additivity, dominance and epistasis outlined by Trudy MacKay in: `Mackay, T.F., 2014. Epistasis and quantitative traits: using model organisms to study gene–gene interactions. Nature Reviews Genetics, 15(1), pp.22-33.`
+
+The scenarios we aim to simulate are those described in Figure 1 (c) of the MacKay's article:
+
+1. additivty + dominance deviations at one or more loci
+2. additivity + divergent epistatic interaction (locus1_BB has divergent phenotypes (verylow / very-high) depending on the genotype at locus 2 (AA/BB)
