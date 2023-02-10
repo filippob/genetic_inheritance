@@ -21,3 +21,7 @@ The scenarios we aim to simulate are those described in Figure 1 (c) of the MacK
 
 1. additivty + dominance deviations at one or more loci
 2. additivity + divergent epistatic interaction (locus1_BB has divergent phenotypes (verylow / very-high) depending on the genotype at locus 2 (AA/BB)
+3. additivity + opposite epistatic interaction: the effects of the AA and BB genotypes at locus 1 are inverted depending on the genotypes at locus 2 (AA / BB)
+
+Various degrees of the above three scenarios may be simulated, more or less extreme
+
