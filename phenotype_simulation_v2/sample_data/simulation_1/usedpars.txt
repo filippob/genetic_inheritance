@@ -1,0 +1,17 @@
+[P1mean]
+0
+[P1main]
+SNP_1 100 0
+SNP_2 100 0
+SNP_3 100 0
+SNP_4 100 0
+[P1epistasis]
+SNP_1 SNP_2 0 0 0 0
+SNP_3 SNP_4 0 0 0 0
+[P1heritability]
+1
+[P1frequency]
+SNP_1 0.625 0.375
+SNP_3 0.875 0.125
+SNP_2 0.375 0.625
+SNP_4 0.375 0.625
