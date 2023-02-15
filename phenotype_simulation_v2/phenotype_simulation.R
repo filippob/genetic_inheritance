@@ -60,6 +60,7 @@ rnorm_posneg_effect = function(n, mean, cv, random_flip){
 #picked in pairs
 #pick_epistasis_effects = function(SNP_names, AA_mean, AD_mean, DA_mean, DD_mean, cv){
 pick_epistasis_effects = function(main_effects){
+  warning('Stub function')
   #epistatic pairs are determined by alternating SNPs with main effects: first
   #and second SNPs, third and fourth SNPs, and so on
   SNP_names = main_effects$SNP
