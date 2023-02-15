@@ -1,0 +1,12 @@
+[P1mean]
+0
+[P1main]
+SNP_1 100 0
+SNP_2 100 0
+[P1epistasis]
+SNP_1 SNP_2 -50 0 0 0
+[P1heritability]
+1
+[P1frequency]
+SNP_1 0.5 0.5
+SNP_2 0.5 0.5
