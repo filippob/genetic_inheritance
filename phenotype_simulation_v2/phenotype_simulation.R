@@ -20,7 +20,7 @@ args = commandArgs(trailingOnly = TRUE)
 
 #we have a secret default config, just for testing purposes
 if (length(args) == 0){
-  test_config_file = '/home/nelson/research/genetic_inheritance/phenotype_simulation_v2/sample_data/configuration.R'
+  test_config_file = '/home/nelson/research/genetic_inheritance/phenotype_simulation_v2/test_data/configuration.R'
   args[1] = test_config_file
   writeLines(paste('No config file provided, using default:', test_config_file))
 }
@@ -245,7 +245,7 @@ noncausative = setdiff(colnames(SNP), main_effects$SNP)
 
 #are we going to output a compressed
 fp = gzfile(description = conf$SNP_outfile, open = 'w')
-write.csv(x = t(SNP[,noncausative]), file = fp)
+write.csv(x = t(SNP[,noncausative, drop = FALSE]), file = fp)
 close(fp)
 
 #we also write the list of causative SNPs, just to be sure
