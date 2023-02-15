@@ -237,7 +237,7 @@ if (is.null(pheno_values)){
 colnames(pheno_values) = newcolnames
 
 #saving, overwriting at each iteration
-write.csv(pheno_values, conf$pheno_outfile, row.names = FALSE)
+write.csv(pheno_values, conf$pheno_outfile, row.names = TRUE)
 
 # GENOTYPES EXCLUDING CAUSATIVE SNPS --------------------------------------
 #we need to save the SNP matrix removing all the selected causative SNPs
