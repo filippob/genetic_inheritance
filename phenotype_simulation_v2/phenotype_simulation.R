@@ -59,25 +59,27 @@ rnorm_posneg_effect = function(n, mean, cv, random_flip){
 #SNP with epistasis effect are the same as those with the main effect,
 #picked in pairs
 #pick_epistasis_effects = function(SNP_names, AA_mean, AD_mean, DA_mean, DD_mean, cv){
-pick_epistasis_effects = function(main_effects){
+pick_epistasis_effects = function(main_effects, QTN_epistasis_additive_overexpression){
   warning('Stub function')
   #epistatic pairs are determined by alternating SNPs with main effects: first
   #and second SNPs, third and fourth SNPs, and so on
   SNP_names = main_effects$SNP
-  SNPA_selected = SNP_names[seq(from=1, to=nrow(main_effects), by=2)]
-  SNPB_selected = SNP_names[seq(from=2, to=nrow(main_effects), by=2)]
+  #SNPA_selected = SNP_names[seq(from=1, to=nrow(main_effects), by=2)]
+  #SNPB_selected = SNP_names[seq(from=2, to=nrow(main_effects), by=2)]
+  SNPA_selected = seq(from=1, to=nrow(main_effects), by=2)
+  SNPB_selected = seq(from=2, to=nrow(main_effects), by=2)
   
   #generating effects: combinations of additive and dominant
-  #AA_eff = rnorm_posneg_effect(n = QTN_epi, mean = AA_mean, cv = cv)
+  AA_eff = (main_effects$additive[SNPA_selected] + main_effects$additive[SNPB_selected]) * QTN_epistasis_additive_overexpression
   #AD_eff = rnorm_posneg_effect(n = QTN_epi, mean = AD_mean, cv = cv)
   #DA_eff = rnorm_posneg_effect(n = QTN_epi, mean = DA_mean, cv = cv)
   #DD_eff = rnorm_posneg_effect(n = QTN_epi, mean = DD_mean, cv = cv)
   
   #putting all together
   return(data.frame(
-    SNPA = SNPA_selected,
-    SNPB = SNPB_selected,
-    additive_additive = 0,
+    SNPA = SNP_names[SNPA_selected],
+    SNPB = SNP_names[SNPB_selected],
+    additive_additive = AA_eff,
     additive_dominance = 0,
     dominance_additive = 0,
     dominance_dominance = 0
@@ -128,7 +130,7 @@ if (conf$QTN_num %% 2 == 1){
 #if there are already phenotypes, we are going to add to the table
 pheno_values = NULL
 if(file.exists(conf$pheno_outfile)){
-  pheno_values = read.csv(conf$pheno_outfile, stringsAsFactors = FALSE)
+  pheno_values = read.csv(conf$pheno_outfile, stringsAsFactors = FALSE, row.names = 1)
 }
 
 #building a string that will be used to name this phenotype and for interface purposes
@@ -139,6 +141,7 @@ phenoname = paste(sep='', 'simphe',
                   '_QTN', conf$QTN_num,
                   '_RandomSign', conf$QTN_random_sign,
                   '_Dfraction', conf$QTN_dominance_fraction,
+                  '_EpiAddOver', conf$QTN_epistasis_additive_overexpression,
                   '_testMode', conf$test_mode,
                   '_epoch', epoch
 )
@@ -181,7 +184,7 @@ param = c(
 )
 writeLines(param, con = fp)
 close(fp)
-epi_effects = pick_epistasis_effects(main_effects = main_effects)
+epi_effects = pick_epistasis_effects(main_effects = main_effects, QTN_epistasis_additive_overexpression = conf$QTN_epistasis_additive_overexpression)
 
 write.table(epi_effects, file = conf$param_file_simphe, sep = '\t', row.names = FALSE, quote = FALSE, append = TRUE, col.names = FALSE)
 
@@ -228,16 +231,18 @@ while(TRUE){
 }
 
 #putting phenotype with already present ones
-newcolnames = c(colnames(pheno_values), phenoname)
+newcolnames = c('sample', colnames(pheno_values), phenoname)
 if (is.null(pheno_values)){
   pheno_values = phenotypes
 }else{
+  pheno_values$sample = NULL
   pheno_values = cbind(pheno_values, phenotypes)  
 }
+pheno_values = as_tibble(cbind(data.frame(sample = rownames(SNP)), pheno_values))
 colnames(pheno_values) = newcolnames
 
 #saving, overwriting at each iteration
-write.csv(pheno_values, conf$pheno_outfile, row.names = TRUE)
+write.csv(pheno_values, conf$pheno_outfile, row.names = FALSE)
 
 # GENOTYPES EXCLUDING CAUSATIVE SNPS --------------------------------------
 #we need to save the SNP matrix removing all the selected causative SNPs
