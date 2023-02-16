@@ -1,5 +1,8 @@
 #install.packages('SimPhe')
 library(SimPhe)
+library(tidyr)
+library(readr)
+library(dplyr)
 
 #steps to success
 # - decide the number of markers for the main effects (additive, dominant)
@@ -130,7 +133,7 @@ if (conf$QTN_num %% 2 == 1){
 #if there are already phenotypes, we are going to add to the table
 pheno_values = NULL
 if(file.exists(conf$pheno_outfile)){
-  pheno_values = read.csv(conf$pheno_outfile, stringsAsFactors = FALSE, row.names = 1)
+  pheno_values = read_csv(file = conf$pheno_outfile, col_names = TRUE, show_col_types = FALSE)
 }
 
 #building a string that will be used to name this phenotype and for interface purposes
@@ -231,18 +234,18 @@ while(TRUE){
 }
 
 #putting phenotype with already present ones
-newcolnames = c('sample', colnames(pheno_values), phenoname)
+tmp = as_tibble(phenotypes)
+colnames(tmp) = phenoname
+tmp$sample = rownames(phenotypes)
+
 if (is.null(pheno_values)){
-  pheno_values = phenotypes
+  pheno_values = tmp
 }else{
-  pheno_values$sample = NULL
-  pheno_values = cbind(pheno_values, phenotypes)  
+  pheno_values = full_join(x=tmp, y=pheno_values, by = 'sample')  
 }
-pheno_values = as_tibble(cbind(data.frame(sample = rownames(SNP)), pheno_values))
-colnames(pheno_values) = newcolnames
 
 #saving, overwriting at each iteration
-write.csv(pheno_values, conf$pheno_outfile, row.names = FALSE)
+write_csv(x = pheno_values, file=conf$pheno_outfile)
 
 # GENOTYPES EXCLUDING CAUSATIVE SNPS --------------------------------------
 #we need to save the SNP matrix removing all the selected causative SNPs
