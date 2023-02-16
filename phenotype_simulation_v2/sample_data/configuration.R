@@ -22,7 +22,7 @@ conf$params_outfile = file.path(conf$root, 'simulation_1', 'usedpars.txt')
 conf$pheno_mean = 0
 #number of QTN in the main effect (must be even, because epistasis
 #works in pairs of SNPs)
-conf$QTN_num = 4
+conf$QTN_num = 2
 
 #overall heritability
 conf$pheno_h2 = 0.7
@@ -39,6 +39,8 @@ conf$QTN_random_sign = TRUE
 #homozygous). Intermediate values create intermediate conditions
 conf$QTN_dominance_fraction = 0
 
+#intensity of additive-additive epistasis
+conf$QTN_epistasis_additive_overexpression = -0.25
 #--- utility (not really interesting for end user)
 #tmp folder: for SimPhe interface I'll need to write there genos and parameters
 #files, and then read everything again...
@@ -53,4 +55,4 @@ conf$param_file_simphe = file.path(conf$tmp_folder, 'params.txt')
 #first conf$QTN_num taken in order (and not picked 
 #at random), and epistatic pairings are fixed (first and second SNPs, third and 
 #fourth SNPs, and so forth)
-conf$test_mode = TRUE
+conf$test_mode = FALSE

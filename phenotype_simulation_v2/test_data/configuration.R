@@ -1,4 +1,4 @@
-#this list will contain all the cofigurations
+#this list will contain all the configurations
 conf = list()
 
 #dataset folder
@@ -39,6 +39,7 @@ conf$QTN_random_sign = TRUE
 #homozygous). Intermediate values create intermediate conditions
 conf$QTN_dominance_fraction = 0
 
+#intensity of additive-additive epistasis
 conf$QTN_epistasis_additive_overexpression = -0.25
 #--- utility (not really interesting for end user)
 #tmp folder: for SimPhe interface I'll need to write there genos and parameters

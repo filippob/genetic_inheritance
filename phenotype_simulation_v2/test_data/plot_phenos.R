@@ -32,6 +32,19 @@ phenos = pivot_longer(data = phenos,
                       cols = setdiff(colnames(phenos), c('locus_1', 'locus_2')), 
                       names_to = 'phenoConfig', values_to = 'phenoValue')
 
+#forcing facet order
+phenos$phenoConfig = factor(x = phenos$phenoConfig, levels = c(
+  'Dfraction0_EpiAddOver0.25',
+  'Dfraction0_EpiAddOver0.5',
+  'Dfraction0_EpiAddOver0.75',
+  'Dfraction0_EpiAddOver-0.25',
+  'Dfraction0_EpiAddOver-0.5',
+  'Dfraction0_EpiAddOver-0.75',
+  'Dfraction0_EpiAddOver0'
+))
+
+
+
 #doing the plot
 p = ggplot(phenos, aes(
   x = locus_1, 

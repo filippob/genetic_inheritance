@@ -1,4 +1,0 @@
-SNP_1
-SNP_2
-SNP_3
-SNP_4
