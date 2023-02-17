@@ -12,3 +12,27 @@ Different scenarios are simulated, considering additive. dominant and epistatic 
 
 Human SNP data are likely data from whole-genome sequencing: for the purpose of this work, SNP-array-like data will be extracted, based on the [Infinium Global Screening Array](https://www.illumina.com/products/by-type/microarray-kits/infinium-global-screening.html) with $654,027$ SNP variants 
 (genetic maps and SNP variant lists can be found [here](https://support.illumina.com/downloads/infinium-global-screening-array-v2-0-support-files.html)).
+
+## Modelling additivity, dominance and epistasis
+
+In this work, we are going to follow the model for additivity, dominance and epistasis outlined by Trudy MacKay in: `Mackay, T.F., 2014. Epistasis and quantitative traits: using model organisms to study gene–gene interactions. Nature Reviews Genetics, 15(1), pp.22-33.`
+
+The scenarios we aim to simulate are those described in Figure 1 (c) of the MacKay's article:
+
+1. additivty + dominance deviations at one or more loci
+2. additivity + divergent epistatic interaction (locus1_BB has divergent phenotypes (verylow / very-high) depending on the genotype at locus 2 (AA/BB)
+3. additivity + opposite epistatic interaction: the effects of the AA and BB genotypes at locus 1 are inverted depending on the genotypes at locus 2 (AA / BB)
+
+Various degrees of the above three scenarios may be simulated, more or less extreme.
+
+**Fixed parameters**:
+- MAF: filter at 5% or 10% to retain only SNPs at intermediate frequencies $\rightarrow$ maximise the effect of epistasis (Mackay, 2013)
+- heritability ($h^2$=0.7): we want to have a sizable genetic contribution in order to be able to study the mechanisms of genetic inheritance
+
+**Variable parameters**:
+- n. QTL: oligogenic vs polygenic traits: e.g. 50 vs 500 vs 5000?
+- scenarios of additivity, dominance and epistasis
+
+
+
+
