@@ -38,6 +38,7 @@ if (length(args) == 1){
 # SETUP -------------------------------------------------------------------
 #if not installed, use package remotes, function install_gitlab()
 library("sommer")
+library("madbito")
 
 # ACTUAL PIPELINE ---------------------------------------------------------
 #stats on SNPs, to be updated if needed
